@@ -2,11 +2,13 @@ import App from "../../App";
 import StorePage from "../storePage/StorePage";
 import CartPage from "../cartPage/CartPage";
 import HomePage from "../homePage/HomePage";
+import ErrorPage from "../errorPage/ErrorPage";
 
 const routes = [
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

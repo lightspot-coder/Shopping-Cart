@@ -19,7 +19,7 @@ function HomePage() {
   }
 
   return (
-    <>
+    <div className="home-page-container">
       <h1>This is the Home Page</h1>
       <p>Hi {userName}</p>
 
@@ -35,7 +35,7 @@ function HomePage() {
       ) : (
         <button onClick={(e) => handleButtons(e)}>Edit name</button>
       )}
-    </>
+    </div>
   );
 }
 

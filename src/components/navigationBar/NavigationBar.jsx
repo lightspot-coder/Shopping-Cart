@@ -7,14 +7,14 @@ function NavigationBar({ numberOfItemsOnTheCart }) {
         <p>Shopping cart</p>
         <ul>
           <li>
-            <Link to="/home-page">Home Page</Link>
+            <Link to="/home-page">Home</Link>
           </li>
           <li>
-            <Link to="/store-page">Store Page</Link>
+            <Link to="/store-page">Store</Link>
           </li>
           <li>
             <Link to="/cart-page">
-              Cart Page
+              Cart
               {numberOfItemsOnTheCart > 0 ? `(${numberOfItemsOnTheCart})` : ""}
             </Link>
           </li>

@@ -4,20 +4,17 @@ import Card from "../Card/Card";
 async function getData(jsonData) {
   try {
     let data = await jsonData.json();
-    console.log(data);
-    let imgURL = data.image;
-    let imgTitle = data.title;
-    //console.log(imgURL);
-    return [imgURL, imgTitle];
+    // console.log(data);
+    return data;
   } catch (error) {
     console.log(`getData(): Error ${error}`);
     return null;
   }
 }
 
-async function getUrlFromAPI(index) {
+async function getUrlFromAPI() {
   try {
-    let response = await fetch("https://fakestoreapi.com/products/" + index);
+    let response = await fetch("https://fakestoreapi.com/products/");
     if (response.ok) {
       let imgUrl = await getData(response);
       return imgUrl;
@@ -31,18 +28,16 @@ async function getUrlFromAPI(index) {
 }
 
 function StorePage() {
-  const [arrayOfImgURL, setArrayOfImgURL] = useState(null);
+  const [arrayOfItems, setArrayOfImgURL] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
-      let arrayOfData = [];
+      let data = [];
       console.log("fetching....");
-      for (let i = 0; i < 6; i++) {
-        arrayOfData[i] = await getUrlFromAPI(i + 1);
-      }
-      setArrayOfImgURL(arrayOfData);
-      //console.log(arrayOfImgURL);
+      data = await getUrlFromAPI();
+      setArrayOfImgURL(data);
+      console.log(data);
       setLoading(false);
     }
     fetchData();
@@ -54,9 +49,16 @@ function StorePage() {
   return (
     <>
       <h1>This is the Store Page</h1>
-      <div className="grid-cards">
-        {arrayOfImgURL.map(([url, title], index) => {
-          return <Card imgUrl={url} title={title} key={index} />;
+      <div className="grid-cards-container">
+        {arrayOfItems.map((item, index) => {
+          return (
+            <Card
+              imgUrl={item.image}
+              title={item.title}
+              id={item.id}
+              key={index}
+            />
+          );
         })}
       </div>
     </>

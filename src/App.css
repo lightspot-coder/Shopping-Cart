@@ -2,9 +2,17 @@ body {
   margin: 0;
 }
 
+/*App*/
+.app-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+/**/
+
 .navigation-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1rem;
   background-color: rgb(53, 48, 48);
   color: white;
@@ -36,21 +44,18 @@ body {
   background-color: rgb(12, 11, 11);
 }
 
-.container {
-  margin: 1rem;
-  text-align: center;
-}
-
-.grid-cards {
-  display: flex;
-}
-
 .card {
   width: 200px;
   height: 400px;
-  border: 2px solid black;
+  border: 1px solid rgb(172, 169, 169);
+  border-radius: 10px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+.card:hover {
+  background-color: rgb(221, 219, 218);
 }
 
 .card img {
@@ -62,12 +67,102 @@ body {
   font-size: 1.25rem;
 }
 
-.cart-list {
+/* Cart page*/
+.cart-page-container {
   display: flex;
   flex-direction: column;
+  text-align: center;
+}
+.cart-list-container > * {
+  border-bottom: 2px solid rgb(187, 182, 182);
+  margin: 1rem 0;
 }
 
-.cart-list img {
+.cart-item-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-item-container img {
   width: 100px;
   height: 100px;
+}
+
+.cart-item-container > div {
+  width: 150px;
+}
+
+.cart-item-user-input-container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cart-item-user-input-container > label {
+  font-size: 1rem;
+}
+/**/
+
+.error-page-container {
+  text-align: center;
+}
+
+/*store page*/
+
+.grid-cards-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.grid-cards-container > * {
+  align-items: center;
+}
+
+/**/
+
+button {
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(53, 48, 48);
+  color: white;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: rgb(126, 122, 122);
+}
+
+button:active {
+  transform: translateY(5px);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  width: 30px;
+  height: 30px;
+}
+
+input[type="number"] {
+  border: none;
+  border-radius: 10px;
+  width: 50px;
+  height: 40px;
+  font-size: 1rem;
+  background-color: rgb(194, 199, 202);
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .app-container {
+    margin: 0 15vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .app-container {
+    margin: 0 20vw;
+  }
+  .cart-page-container {
+    margin: 0 10vw;
+  }
 }

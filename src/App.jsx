@@ -11,11 +11,11 @@ function App() {
     <>
       <NavigationBar
         numberOfItemsOnTheCart={itemsOnTheCart.reduce((total, currentItem) => {
-          return +currentItem.quantity + total;
+          return currentItem.quantity + total;
         }, 0)}
       ></NavigationBar>
 
-      <div className="container">
+      <div className="app-container">
         {
           <Outlet
             context={[

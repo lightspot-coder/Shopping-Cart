@@ -6,7 +6,7 @@ function CartPage() {
 
   function handleInput(e, index) {
     let array = itemsOnTheCart.slice();
-    array[index].quantity = e.target.value;
+    array[index].quantity = +e.target.value;
     setItemsOnTheCart(array);
   }
 
@@ -18,38 +18,41 @@ function CartPage() {
 
   function createElement(item, index) {
     return (
-      <div key={item.id}>
-        <img src={item.imgUrl}></img>
-        <p>{item.title}</p>
-        <label>
-          quantity :
-          <input
-            type="number"
-            min="0"
-            max="50"
-            value={item.quantity}
-            onChange={(e) => handleInput(e, index)}
-          />
-        </label>
-        <button
-          onClick={(e) => {
-            handleDeleteItem(e, item.id);
-          }}
-        >
-          delete item
-        </button>
+      <div className="cart-item-container" key={item.id}>
+        <div>
+          <img src={item.imgUrl}></img>
+          <p>{item.title}</p>
+        </div>
+        <div className="cart-item-user-input-container">
+          <label>
+            quantity :
+            <input
+              type="number"
+              min="0"
+              max="50"
+              value={item.quantity}
+              onChange={(e) => handleInput(e, index)}
+            />
+          </label>
+          <button
+            onClick={(e) => {
+              handleDeleteItem(e, item.id);
+            }}
+          >
+            delete item
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <>
-      <p>hi {userName}</p>
-      <h1>This is the Cart Page</h1>
-      <div className="cart-list">
+    <div className="cart-page-container">
+      <h1>This is the {userName}'s Cart</h1>
+      <div className="cart-list-container">
         {itemsOnTheCart.map((item, index) => createElement(item, index))}
       </div>
-    </>
+    </div>
   );
 }
 
